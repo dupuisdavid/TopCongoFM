@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,7 +20,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
@@ -228,7 +226,12 @@ public class NewsListActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true); // <== Will cause the highlight to remain
 
-                News news = newsDataList.get(position);
+                News news = (newsDataList != null && newsDataList.size() > 0) &&
+                        position < newsDataList.size() ? newsDataList.get(position) : null;
+
+                if (news == null) {
+                    return;
+                }
 
                 Intent intent = new Intent(activity, NewsDetailActivity.class);
                 intent.putExtra("News", news);
@@ -296,7 +299,7 @@ public class NewsListActivity extends Activity {
 
     public void requestForNewsList(final Boolean pagination, final Runnable completionRunnable, final Runnable failureRunnable) {
 
-        String queryStringParameters = "";
+        String queryStringParameters;
 
         if (pagination) {
             queryStringParameters = String.format(Locale.getDefault(), "?pageIndex=%d", currentPage);
@@ -314,14 +317,10 @@ public class NewsListActivity extends Activity {
         client.setTimeout(10000);
         client.get(URL, new JsonHttpResponseHandler() {
             @Override
-            public void onStart() {
-
-            }
+            public void onStart() {}
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-
-            }
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {}
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -329,8 +328,6 @@ public class NewsListActivity extends Activity {
                 Log.i("JsonHttpClient", "onSuccess");
 
                 if (response != null) {
-//		    		Log.i("JSON", response.toString());
-
                     try {
 
                         totalPages = response.getInt("totalPages");
