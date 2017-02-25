@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "464980092106",
+    "firebase_url": "https://topcongofm-c4c18.firebaseio.com",
+    "project_id": "topcongofm-c4c18",
+    "storage_bucket": "topcongofm-c4c18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464980092106:android:626b728c3e350869",
+        "android_client_info": {
+          "package_name": "com.dnd.radioTopCongo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464980092106-h1p4uh43ig52mpoqj1dipk7vepu5t2e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVKWY_f18u34xelOjfA0R9I-h7_UHJGb0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-50238759-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464980092106-h1p4uh43ig52mpoqj1dipk7vepu5t2e7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

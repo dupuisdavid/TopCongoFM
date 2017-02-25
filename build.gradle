@@ -1,0 +1,21 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {url "http://central.maven.org/maven2/com/loopj/android/android-async-http/"}
+        maven {url "http://jzaccone.github.io/SlidingMenu-aar"}
+        maven {url "http://dl.bintray.com/populov/maven"}
+        mavenCentral()
+    }
+}

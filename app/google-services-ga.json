@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "470308512214",
+    "project_id": "tribal-marker-827"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470308512214:android:626b728c3e350869",
+        "android_client_info": {
+          "package_name": "com.dnd.radioTopCongo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtWH8gOw5EKnO2EwMq_253g8cZvDeaG5w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-50238759-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

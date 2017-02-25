@@ -1,0 +1,285 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wrapperView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    tools:context=".MainPlayerActivity" >
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#ffffffff">
+
+		<ImageButton
+			android:id="@+id/contactButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="40dp"
+			android:layout_alignParentEnd="true"
+			android:contentDescription="@null"
+			android:src="@drawable/contact_button"
+			android:background="#00ffffff"
+			android:padding="0dp" />
+        
+        <ImageButton
+            android:id="@+id/informationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@null"
+            android:src="@drawable/information_button" 
+            android:background="#00ffffff"
+            android:padding="0dp" />
+		
+        <ImageView
+            android:layout_width="165dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null"
+            android:src="@drawable/logo" />
+        
+        
+        <RelativeLayout 
+	        android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="25dp"
+			android:layout_marginTop="107dp"
+			android:background="#ffffffff">
+
+	        <ImageButton
+	            android:id="@+id/playPauseButton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:contentDescription="@null"
+	            android:src="@drawable/play" 
+	            android:background="#00ffffff"
+	            android:padding="0dp" />
+	        
+       	</RelativeLayout>
+       
+        <!--
+        	http://www.mokasocial.com/2011/02/create-a-custom-styled-ui-slider-seekbar-in-android/
+        	http://developer-dot-android.blogspot.in/2012/03/custom-seekbar-tutorial.html
+        	http://developer.android.com/tools/help/draw9patch.html
+        	http://android-holo-colors.com/
+        	http://stackoverflow.com/questions/2912609/android-seekbar-thumb-gets-clipped-cut-off
+        -->
+        
+        <SeekBar 
+            android:id="@+id/volumeSeekBar" 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content" 
+            android:layout_marginStart="97dp"
+            android:layout_marginTop="113dp"
+            android:layout_marginEnd="22dp"
+            android:thumbOffset="0dp"
+            android:progressDrawable="@drawable/apptheme_scrubber_progress_horizontal_holo_light"
+        	android:thumb="@drawable/apptheme_scrubber_control_selector_holo_light">
+        </SeekBar>
+        
+        <TextView
+			android:id="@+id/playerStatusTextView"
+			android:text=""
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/volumeSeekBar"
+			android:layout_marginStart="97dp"
+			android:layout_marginTop="2dp"
+			android:layout_marginEnd="22dp"
+			android:gravity="center"
+			android:textColor="#ff04056b"
+			android:background="#ffffffff"
+			android:textSize="12sp" />
+        
+        <RelativeLayout 
+            android:id="@+id/focusNewsHeadingView"
+	        android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="0dp"
+			android:layout_marginTop="170dp"
+			android:background="#ffffffff">
+
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginStart="9dp"
+	            android:layout_marginTop="0dp"
+	            android:contentDescription="@null"
+	            android:src="@drawable/focus_icon" />
+	        
+	        <TextView
+				android:id="@+id/focusNewsHeadingTextView"
+				android:text="@string/focusNewsHeading"
+				android:layout_width="wrap_content"
+				android:layout_height="18dp"
+				android:layout_marginStart="0dp"
+				android:layout_marginTop="0dp"
+				android:layout_marginEnd="0dp"
+				android:paddingEnd="0dp"
+                android:paddingStart="30dp"
+				android:gravity="start"
+				android:textColor="#ff000066"
+				android:textStyle="bold"
+				android:textSize="12sp" />
+	        
+       	</RelativeLayout>
+
+        <View 
+            android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_below="@+id/focusNewsHeadingView"
+			android:layout_marginTop="5dp"
+			android:background="#ff111173" />
+       	
+        <FrameLayout
+		    android:id="@+id/focusNewsListWrapperView"
+		    android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="195dp"
+            android:layout_marginBottom="71dp">
+
+            <ListView
+       			android:id="@+id/focusNewsList"
+       			android:layout_width="match_parent"
+            	android:layout_height="match_parent"
+            	android:overScrollMode="never"
+            	android:scrollbars="none"
+            	android:layout_marginTop="-2dp"
+       			android:choiceMode="singleChoice"
+       			android:background="#ffffffff"
+   				android:cacheColorHint="#ffffffff"
+       			android:alpha="0.0"
+       			android:divider="#ff111173"
+				android:dividerHeight="1dp">
+   			</ListView>
+   
+   			<!-- android:listSelector="@color/news_menulist_selector" -->
+           
+        </FrameLayout>
+	        
+        <TextView
+			android:id="@+id/focusNewsListLoadingStatusTextView"
+			android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="195dp"
+            android:layout_marginBottom="71dp"
+			android:gravity="center"
+			android:textColor="#ff000066"
+			android:textSize="12sp" />
+
+        <RelativeLayout 
+	        android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+	        android:layout_marginBottom="26dp">
+	        
+            <Button
+	            android:id="@+id/allNewsButton"
+	            android:layout_width="match_parent"
+	            android:layout_height="45dp"
+	            android:contentDescription="@null"
+	            android:background="@drawable/all_news_button_background" 
+	            android:gravity="center"
+	            android:text="@string/allNewsTextButton"
+	            android:textAllCaps="false"
+	            android:textColor="#ffffffff"
+	            android:textStyle="bold"
+	            android:paddingEnd="0dp"
+                android:paddingStart="8dp"
+	            android:paddingBottom="2dp" />
+            
+            <View 
+	            android:id="@+id/centerAnchorView" 
+	            android:layout_centerHorizontal="true"
+	            android:layout_width="1dp" 
+	            android:layout_height="10dp"
+	            android:background="#00ffcc00" />
+            
+            <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_toStartOf="@+id/centerAnchorView"
+	            android:layout_centerVertical="true"
+	            android:layout_marginEnd="54dp"
+	            android:layout_marginTop="0dp"
+	            android:contentDescription="@null"
+	            android:src="@drawable/all_news_button_icon" />
+            
+            <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+				android:layout_alignParentEnd="true"
+				android:layout_centerVertical="true"
+	            android:layout_marginEnd="8dp"
+	            android:layout_marginTop="0dp"
+	            android:contentDescription="@null"
+	            android:src="@drawable/all_news_button_right_arrow" />
+            
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:textColor="#ff000000"
+                android:background="#00ffffff"
+                android:textSize="8sp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/copyright" />
+
+            <Button
+                android:id="@+id/privacy_policy_button"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:contentDescription="@null"
+                android:gravity="center"
+                android:background="@null"
+                android:text="Politique de confidentialité"
+                android:textSize="8sp"
+                android:textColor="#ff000000"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+	</RelativeLayout>
+	
+    <RelativeLayout 
+        android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="500dp"
+		android:layout_marginBottom="10dp"
+		android:background="#ffffffff"
+		android:visibility="gone">
+        
+        <TextView 
+            android:id="@+id/textNbKbStreamed"
+			android:layout_width="match_parent" 
+   			android:layout_height="wrap_content" 
+   			android:textStyle="bold"
+   			android:textColor="#ff000000" />
+
+		<ProgressBar android:id="@+id/progress_bar"  
+		    	android:layout_width="200dp"
+		    	android:layout_height="wrap_content"
+		    	android:layout_alignParentStart="true"
+		    	android:layout_marginTop="50dp"
+		    	style="?android:attr/progressBarStyleHorizontal"/>
+		
+    </RelativeLayout>
+    
+</FrameLayout>

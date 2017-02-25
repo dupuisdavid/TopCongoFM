@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:id="@+id/listItem">
+    
+    <View
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="#ffffffff" />
+    
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="3dp"
+        android:scaleType="centerCrop"
+        android:background="#00ffcc00" />
+    
+    <RelativeLayout 
+        android:id="@+id/textViewsWrapperView"
+        android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_toEndOf="@+id/imageView"
+        android:layout_marginEnd="20dp"
+		android:background="#ffffffff">
+
+        <TextView
+	        android:id="@+id/titleTextView"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff000067"
+	        android:textStyle="bold"
+	        android:textSize="12sp"
+	        android:ellipsize="end"
+	        android:background="#00eeeeee" />
+        
+	    <TextView
+	        android:id="@+id/categoryNameTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/titleTextView"
+	        android:textColor="#ffe02017"
+	        android:textSize="12sp"
+	        android:background="#00cccccc" />
+	    
+	    <TextView
+	        android:id="@+id/publicationDateTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/titleTextView"
+	        android:layout_toEndOf="@+id/categoryNameTextView"
+	        android:layout_marginStart="5dp"
+	        android:textColor="#ffe0938C"
+	        android:textSize="12sp"
+	        android:background="#00cccccc" />
+        
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/accessory"
+        android:layout_width="10dp"
+        android:layout_height="15dp"
+        android:contentDescription="@null"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="7dp"
+        android:src="@drawable/news_item_accessory_image" />
+    
+</RelativeLayout>

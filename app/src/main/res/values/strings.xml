@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="appName">Top Congo FM</string>
+    <string name="helloWorld">Hello World</string>
+    <string name="actionSettings">Settings</string>
+
+    <string name="radioTopCongoStreamURL"><![CDATA[http://topcongofm2.ice.infomaniak.ch/topcongofm2-64.mp3]]></string>
+
+    <string name="googleAdMobNewsListBannerViewBlockIdentifier">ca-app-pub-5389091330431068/8140608633</string>
+    <string name="googleAdMobNewsDetailBannerViewBlockIdentifier">ca-app-pub-5389091330431068/9617341835</string>
+
+    <!-- FB APP ID -->
+    <string name="facebookAppId">1583448055201633</string>
+
+    <!-- DEV : http://dev-mobile.topcongo.fm/ -->
+    <!-- PROD : http://mobile.topcongo.fm/ -->
+    <string name="topCongoMobileDataApiDomain">http://mobile.topcongo.fm/</string>
+    <string name="topCongoMobileDataApiArticlesServiceUrl" formatted="false">%sservices/articles.php%s</string>
+    <string name="topCongoMobileDataApiArticleServiceUrl" formatted="false">%sservices/article-detail.php%s</string>
+
+    <string name="playerViewArticlesRequestNb">8</string>
+
+
+    <string name="ptr_pull_to_refresh">Tirer pour rafraîchir</string>
+    <string name="ptr_release_to_refresh">Relâcher pour rafraîchir</string>
+    <string name="ptr_refreshing">Chargement&#8230;</string>
+    <string name="ptr_last_updated">Dernière mise à jour : %1$s</string>
+
+
+    <string name="copyright">Copyright © 2015 topcongo.be</string>
+    <string name="radioTopCongoOnAir">Radio Top Congo on air</string>
+    <string name="radioTopCongoBuffering">Mise en mémoire tampon&#8230;</string>
+    <string name="radioTopCongoPause">La radio est en pause. Appuyez sur lecture pour écouter</string>
+    <string name="radioTopCongoPressPlayToStartListening">Appuyez sur lecture pour écouter la radio</string>
+    <string name="radioTopCongoConnectionLost">Connexion impossible, veuillez réessayer</string>
+
+    <string name="contactTextContactUsByPhone">Nous contacter par téléphone</string>
+    <string name="contactTextEditorialBoard">Rédaction</string>
+    <string name="contactTextCommercialTeam">Commercial</string>
+    <string name="contactTextSpeakAboutProgram">Parlons-en</string>
+    <string name="contactTextContactUsByEmail">Nous contacter par Email</string>
+    <string name="contactTextInformation">Info</string>
+    <string name="contactTextTopMorningProgram">Top Matin</string>
+    <string name="contactTextTechnicalAssistance">Assistance technique</string>
+    <string name="contactTextSkype">skype</string>
+
+    <string name="informationWebPageURL">http://mobile.topcongo.fm/informations/index.html</string>
+    <string name="private_policy_web_page_url">http://mobile.topcongo.fm/private-policy/index.html</string>
+
+    <string name="focusNewsHeading">A la Une</string>
+    <string name="allNewsTextButton">Toute l’actualité</string>
+    <string name="allNewsHeading">Toute l’actualité</string>
+    <string name="loadingProgress">Chargement en cours</string>
+    <string name="loadingError">Une erreur est survenue</string>
+    <string name="errorOccurs">Une erreur est survenue</string>
+
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+
+    <string name="facebookApplicationPackageName">com.facebook.katana</string>
+    <string name="facebookApplicationRequiredToShareContent">L\'installation de l\'application Facebook est requise sur votre appareil.\nTélécharger l\'application Facebook sur le store Google Play ?</string>
+
+
+</resources>

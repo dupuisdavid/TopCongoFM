@@ -1,0 +1,293 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wrapperView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    tools:context=".MainPlayerActivity" >
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#ffffffff">
+		
+        <ImageButton
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@null"
+            android:src="@drawable/close_button" 
+            android:background="#00ffffff"
+            android:padding="0dp" />
+        
+		<ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null"
+            android:src="@drawable/logo_small" />
+	
+		<ScrollView
+	        android:id="@+id/scrollView1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="20dp"
+	        android:layout_marginBottom="30dp"
+	        android:layout_below="@+id/logoImageView">
+	
+	        <RelativeLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content">
+	            
+	            <TextView
+				    android:id="@+id/contactUsByPhoneTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_centerHorizontal="true"
+			        android:textColor="#ff888888"
+			        android:textSize="12sp"
+					android:textAllCaps="false"
+					android:text="@string/contactTextContactUsByPhone" />
+				
+				<Button
+		            android:id="@+id/contactEditorialBoardButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactUsByPhoneTextView"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="@string/contactTextEditorialBoard"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactCommercialTeamButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactEditorialBoardButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="@string/contactTextCommercialTeam"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactSpeakAboutProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactCommercialTeamButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="@string/contactTextSpeakAboutProgram"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactHappyBirthdayProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactSpeakAboutProgramButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="Joyeux anniversaire"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactListenersMagazineProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactHappyBirthdayProgramButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="Le journal des auditeurs"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactTopDedicationProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactListenersMagazineProgramButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="TOP DÉDICACES"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactTopPressProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactTopDedicationProgramButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="TOP PRESSE"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactTopDisaporaProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactTopPressProgramButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="TOP DIASPORA"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				
+				<TextView
+				    android:id="@+id/contactTextContactUsByEmailTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_centerHorizontal="true"
+			        android:layout_below="@+id/contactTopDisaporaProgramButton"
+		            android:layout_marginTop="20dp"
+			        android:textColor="#ff888888"
+			        android:textSize="12sp"
+					android:textAllCaps="false"
+					android:text="@string/contactTextContactUsByEmail" />
+				
+				<Button
+		            android:id="@+id/contactInformationButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactTextContactUsByEmailTextView"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="@string/contactTextInformation"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactTopMorningProgramButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactInformationButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="@string/contactTextTopMorningProgram"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+				
+				<Button
+		            android:id="@+id/contactTechnicalAssistanceButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="10dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactTopMorningProgramButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_button_background"
+		            android:text="@string/contactTextTechnicalAssistance"
+		            android:textColor="#ffffffff"
+			        android:textSize="15sp"
+			        android:textStyle="bold"
+		            android:padding="0dp" />
+
+				<Button
+		            android:id="@+id/contactSkypeButton"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="20dp"
+		            android:layout_marginBottom="20dp"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/contactTechnicalAssistanceButton"
+		            android:contentDescription="@null"
+		            android:background="@drawable/contact_skype_button_background"
+		            android:text="@string/contactTextSkype"
+		            android:textColor="#ffffffff"
+			        android:textSize="20sp"
+			        android:textStyle="bold"
+		            android:textAllCaps="true"
+		            android:padding="0dp" />
+	
+	        </RelativeLayout>
+	
+	    </ScrollView>
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentBottom="true"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="26dp"
+				android:textColor="#ff000000"
+				android:background="#00ffffff"
+				android:textSize="8sp"
+				android:paddingEnd="10dp"
+				android:paddingStart="10dp"
+				android:gravity="center"
+				android:textAllCaps="false"
+				android:text="@string/copyright" />
+
+			<Button
+				android:id="@+id/privacy_policy_button"
+				android:layout_width="wrap_content"
+				android:layout_height="26dp"
+				android:paddingEnd="10dp"
+				android:paddingStart="10dp"
+				android:contentDescription="@null"
+				android:gravity="center"
+				android:background="@null"
+				android:text="Politique de confidentialité"
+				android:textSize="8sp"
+				android:textColor="#ff000000"
+				android:textStyle="normal" />
+		</LinearLayout>
+        
+	</RelativeLayout>
+	
+</FrameLayout>
