@@ -34,6 +34,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 
 import com.dnd.radioTopCongo.business.News;
+import com.dnd.radioTopCongo.helpers.GoogleApiHelper;
 import com.dnd.radioTopCongo.toolbox.DisplayProperties;
 import com.dnd.radioTopCongo.toolbox.HandlerUtilities;
 import com.dnd.radioTopCongo.toolbox.Network;
@@ -44,6 +45,8 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.plus.PlusShare;
 import com.rosaloves.bitlyj.Bitly;
 import com.rosaloves.bitlyj.ShortenedUrl;
@@ -119,7 +122,7 @@ public class NewsDetailActivity extends Activity {
 	
 	// Shared Preferences
 	private static SharedPreferences mSharedPreferences;
-    
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -541,14 +544,20 @@ public class NewsDetailActivity extends Activity {
     	
     	// Sharing to Google+ from your Android app
     	// https://developers.google.com/+/mobile/android/share/
-    	
-    	Intent shareIntent = new PlusShare.Builder(this)
-	        .setType("text/plain")
-	        .setText(news.getTitle())
-	        .setContentUrl(Uri.parse(urlToShare))
-	        .getIntent();
 
-    	startActivityForResult(shareIntent, 0);
+		try {
+            if (GoogleApiHelper.isGooglePlayServicesAvailable(this)) {
+                Intent shareIntent = new PlusShare.Builder(this)
+                        .setType("text/plain")
+                        .setText(news.getTitle())
+                        .setContentUrl(Uri.parse(urlToShare))
+                        .getIntent();
+                startActivityForResult(shareIntent, 0);
+            }
+		} catch (Exception e) {
+			Toast.makeText(this, "Il semble que vous n'ayez pas installé l'application Google+ sur votre appareil. Partage impossible.", Toast.LENGTH_SHORT).show();
+		}
+
     }
     
     private void shareOnLinkedIn() {
