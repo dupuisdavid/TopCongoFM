@@ -78,6 +78,8 @@ dependencies {
     }
 
     compile 'com.onesignal:OneSignal:3.+@aar'
+    // https://github.com/birdcage/soundcloud-web-api-android
+    compile 'com.jlubecki.soundcloud:soundcloud-api:1.2.1'
 
 }
 
