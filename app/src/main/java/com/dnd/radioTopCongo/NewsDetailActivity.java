@@ -545,6 +545,7 @@ public class NewsDetailActivity extends Activity {
     	// Sharing to Google+ from your Android app
     	// https://developers.google.com/+/mobile/android/share/
 
+        
 		try {
             if (GoogleApiHelper.isGooglePlayServicesAvailable(this)) {
                 Intent shareIntent = new PlusShare.Builder(this)
