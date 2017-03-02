@@ -59,6 +59,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:10.2.0'
     compile 'com.google.android.gms:play-services-plus:10.2.0'
     compile 'com.google.firebase:firebase-core:9.4.0'
+    compile 'com.google.apis:google-api-services-youtube:v3-rev182-1.22.0'
 
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
@@ -77,9 +78,11 @@ dependencies {
         transitive = true;
     }
 
-    compile 'com.onesignal:OneSignal:3.+@aar'
     // https://github.com/birdcage/soundcloud-web-api-android
     compile 'com.jlubecki.soundcloud:soundcloud-api:1.2.1'
+
+    compile 'com.onesignal:OneSignal:3.+@aar'
+
 
 }
 
