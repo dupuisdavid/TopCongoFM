@@ -3,6 +3,8 @@ package com.dnd.radioTopCongo;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
@@ -17,7 +19,7 @@ import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
 
-public class TopCongoApplication extends Application {
+public class TopCongoApplication extends MultiDexApplication {
 
     private static final String TAG = TopCongoApplication.class.getSimpleName();
 	private MainPlayerActivity mainPlayerActivity;
@@ -54,6 +56,12 @@ public class TopCongoApplication extends Application {
         setupOneSignal();
         setupFabric();
 		setupUniversalImageLoader();
+	}
+
+	@Override
+	protected void attachBaseContext(Context newBase) {
+		super.attachBaseContext(newBase);
+		MultiDex.install(this);
 	}
 
     private void setupOneSignal() {
