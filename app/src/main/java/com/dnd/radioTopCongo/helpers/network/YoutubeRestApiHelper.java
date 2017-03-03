@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -35,14 +36,12 @@ public class YoutubeRestApiHelper {
 
     private YoutubeRestApiHelper() {}
 
-    public interface RequestFailureRunnable extends Runnable {
-        void run(Exception exception);
+    public interface RequestFailureAction {
+        void execute(Exception exception);
     }
 
 
     private boolean internetNetworkIsAvailable(Context context) {
-        Resources resources = context.getResources();
-
         if (!Connectivity.networkReady(context)) {
             Toast.makeText(context, "Aucune connexion internet disponible.", Toast.LENGTH_SHORT).show();
             return false;
@@ -51,43 +50,42 @@ public class YoutubeRestApiHelper {
         return true;
     }
 
-    public interface GetInAppPurchasesRequestSuccessRunnable extends Runnable {
-        void run(ArrayList<InAppPurchase> items);
+    private static final String ACTION_GET_PLAYLISTS = "playlists";
+
+    private String buildBaseUri(String action) {
+        return String.format(Locale.FRENCH, "https://www.googleapis.com/youtube/v3/%s", action);
     }
 
-    public AsyncHttpClient getInAppPurchases(@NonNull final Context context, @NonNull final GetInAppPurchasesRequestSuccessRunnable success, @NonNull final RequestFailureRunnable failure) {
+    public interface GetPlaylistsSuccessAction {
+        void execute(ArrayList<YoutubePlaylist> items);
+    }
+
+    public AsyncHttpClient getPlaylists(@NonNull final Context context, @NonNull String apiKey, @NonNull String channelId, @NonNull final GetPlaylistsSuccessAction success, @NonNull final RequestFailureAction failure) {
 
         boolean internetNetworkIsAvailable = internetNetworkIsAvailable(context);
         if (!internetNetworkIsAvailable) {
-            failure.run(new Exception());
+            failure.execute(new Exception());
             return null;
         }
 
-        String urlString = "";
-        Log.i("urlString", "" + urlString);
+        String uri = String.format(Locale.FRENCH, "%s?key=%s&channelId=%s&part=contentDetails,id,localizations,player,snippet,status&maxResults=50", buildBaseUri(ACTION_GET_PLAYLISTS), apiKey, channelId);
+        Log.i("uri", "" + uri);
 
-        return HttpRestClient.get(context, urlString, null, new JsonHttpResponseHandler() {
+        return HttpRestClient.get(context, uri, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // Themes parsing
-                String JSON_KEY_THEMES = "themes";
-                ArrayList<InAppPurchase> inAppPurchaseThemes = null;
-
-                if (inAppPurchaseThemes != null) {
-                    success.run(inAppPurchaseThemes);
-                } else {
-                    failure.run(new Exception(""));
-                }
+                Log.w(TAG, "YOUTUBE PLAYLISTS response: " + response);
+                success.execute(null);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                failure.run(new Exception(throwable));
+                failure.execute(new Exception(throwable));
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                failure.run(new Exception(throwable));
+                failure.execute(new Exception(throwable));
             }
         });
     }

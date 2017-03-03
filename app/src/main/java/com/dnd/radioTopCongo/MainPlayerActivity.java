@@ -39,10 +39,13 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.dnd.radioTopCongo.business.News;
+import com.dnd.radioTopCongo.helpers.network.YoutubePlaylist;
+import com.dnd.radioTopCongo.helpers.network.YoutubeRestApiHelper;
 import com.dnd.radioTopCongo.toolbox.DisplayProperties;
 import com.dnd.radioTopCongo.toolbox.Network;
 import com.dnd.radioTopCongo.toolbox.NewsListAdapter;
 import com.facebook.AppEventsLogger;
+import com.google.android.gms.ads.purchase.InAppPurchase;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.loopj.android.http.AsyncHttpClient;
@@ -141,6 +144,22 @@ public class MainPlayerActivity extends Activity
 		
 		TopCongoApplication application = ((TopCongoApplication) getApplicationContext());
 		application.setMainPlayerActivity(this);
+
+
+		YoutubeRestApiHelper.getInstance().getPlaylists(this, "AIzaSyBrojvIsA1RpplsA_UeWvzBnpWkaFZ8wC0", "UCiZ-kZv-UfgXMClPl98BZzg", new YoutubeRestApiHelper.GetPlaylistsSuccessAction() {
+			@Override
+			public void execute(ArrayList<YoutubePlaylist> items) {
+
+			}
+
+		}, new YoutubeRestApiHelper.RequestFailureAction() {
+			@Override
+			public void execute(Exception exception) {
+
+			}
+		});
+
+
 		
 //		printKeyHash();
 	}
