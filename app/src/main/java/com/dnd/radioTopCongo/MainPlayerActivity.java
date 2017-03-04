@@ -48,6 +48,18 @@ import com.facebook.AppEventsLogger;
 import com.google.android.gms.ads.purchase.InAppPurchase;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestInitializer;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.JsonGenerator;
+import com.google.api.client.json.JsonParser;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -56,9 +68,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
@@ -146,7 +164,12 @@ public class MainPlayerActivity extends Activity
 		application.setMainPlayerActivity(this);
 
 
-		YoutubeRestApiHelper.getInstance().getPlaylists(this, "AIzaSyBrojvIsA1RpplsA_UeWvzBnpWkaFZ8wC0", "UCiZ-kZv-UfgXMClPl98BZzg", new YoutubeRestApiHelper.GetPlaylistsSuccessAction() {
+		// https://developers.google.com/apis-explorer/#p/youtube/v3/
+
+        String apiKey = "AIzaSyBrojvIsA1RpplsA_UeWvzBnpWkaFZ8wC0";
+        String channelId = "UCiZ-kZv-UfgXMClPl98BZzg";
+/*
+		YoutubeRestApiHelper.getInstance().getPlaylists(this, apiKey, channelId, new YoutubeRestApiHelper.GetPlaylistsSuccessAction() {
 			@Override
 			public void execute(ArrayList<YoutubePlaylist> items) {
 
@@ -158,6 +181,31 @@ public class MainPlayerActivity extends Activity
 
 			}
 		});
+*/
+        HttpTransport transport = new NetHttpTransport();
+        JsonFactory jsonFactory = new JacksonFactory();
+        GoogleCredential credential = new GoogleCredential()
+                .setAccessToken(apiKey);
+        YouTube youtube = new YouTube.Builder(transport, jsonFactory, credential).setApplicationName("TOP CONGO FM").build();
+
+        try {
+            YouTube.Search.List query = youtube.search().list("id,snippet");
+            query.setKey(apiKey);
+            query.setType("video");
+            query.setFields("items(id/videoId,snippet/title,snippet/description,snippet/thumbnails/default/url)");
+
+
+            SearchListResponse response = query.execute();
+            List<SearchResult> results = response.getItems();
+
+            for (SearchResult result:results) {
+                Log.d(TAG, "RESULT: " + result.getSnippet().getTitle());
+            }
+
+
+        } catch(IOException e) {
+            Log.d("YC", "Could not initialize: "+e);
+        }
 
 
 		
