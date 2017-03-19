@@ -182,6 +182,9 @@ public class MainPlayerActivity extends Activity
 			}
 		});
 */
+
+
+/*
         HttpTransport transport = new NetHttpTransport();
         JsonFactory jsonFactory = new JacksonFactory();
         GoogleCredential credential = new GoogleCredential()
@@ -206,7 +209,7 @@ public class MainPlayerActivity extends Activity
         } catch(IOException e) {
             Log.d("YC", "Could not initialize: "+e);
         }
-
+*/
 
 		
 //		printKeyHash();
@@ -768,7 +771,7 @@ public class MainPlayerActivity extends Activity
         }
     }
 
-    public class SettingsContentObserver extends ContentObserver {
+    private class SettingsContentObserver extends ContentObserver {
         int previousVolume;
         Context context;
 
