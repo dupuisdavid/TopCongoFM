@@ -17,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.InflateException;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,38 +128,48 @@ public class NewsDetailActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.news_detail_activity);
-		Log.i(TAG, "onCreate");
-		
-		// RETRIEVE DATA
-		news = (News) getIntent().getSerializableExtra("News");
-//		Log.i("Retrieve news", "" + news);
-		
-		wrapperView = (FrameLayout) findViewById(R.id.wrapperView);
-		innerWrapperView = (RelativeLayout) findViewById(R.id.innerWrapperView);
 
-		setupAdMobBanner();
-		setupBackButton();
-		setupWebView();
+        // Add a try catch for very specific InflateException for Lollipop
+        // Error inflating class android.webkit.WebView happens sporadically in production
+        // http://stackoverflow.com/questions/31732169/error-inflating-class-android-webkit-webview-happens-sporadically-in-production
+        // On Crashlytics, see issue #10.
 
-        Button privacyPolicyButton = (Button) findViewById(R.id.privacy_policy_button);
-        if (privacyPolicyButton != null) {
-            privacyPolicyButton.setPaintFlags(privacyPolicyButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-            privacyPolicyButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(NewsDetailActivity.this, PrivatePolicyActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
-		
-		uiHelper = new UiLifecycleHelper(this, null);
-	    uiHelper.onCreate(savedInstanceState);
-	    
-	    // Shared Preferences
-	 	mSharedPreferences = getApplicationContext().getSharedPreferences("MyPref", 0);
-        
+		try {
+			setContentView(R.layout.news_detail_activity);
+			Log.i(TAG, "onCreate");
+
+			// RETRIEVE DATA
+			news = (News) getIntent().getSerializableExtra("News");
+//		    Log.i("Retrieve news", "" + news);
+
+			wrapperView = (FrameLayout) findViewById(R.id.wrapperView);
+			innerWrapperView = (RelativeLayout) findViewById(R.id.innerWrapperView);
+
+			setupAdMobBanner();
+			setupBackButton();
+			setupWebView();
+
+			Button privacyPolicyButton = (Button) findViewById(R.id.privacy_policy_button);
+			if (privacyPolicyButton != null) {
+				privacyPolicyButton.setPaintFlags(privacyPolicyButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+				privacyPolicyButton.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(NewsDetailActivity.this, PrivatePolicyActivity.class);
+						startActivity(intent);
+					}
+				});
+			}
+
+			uiHelper = new UiLifecycleHelper(this, null);
+			uiHelper.onCreate(savedInstanceState);
+
+			// Shared Preferences
+			mSharedPreferences = getApplicationContext().getSharedPreferences("MyPref", 0);
+
+		} catch (InflateException e) {
+            Toast.makeText(this, getResources().getString(R.string.errorOccurs), Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	public void setupAdMobBanner() {
